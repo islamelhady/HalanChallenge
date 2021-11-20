@@ -5,10 +5,14 @@
       <map>
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/drawable/ic_outlined_logout.xml" value="0.18425925925925926" />
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/activity_main.xml" value="0.2171875" />
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/activity_product_details.xml" value="0.25" />
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/activity_products_list.xml" value="0.2171875" />
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/image_view_item.xml" value="0.2171875" />
+        <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/login_fragment.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/product_details_fragment.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/product_item.xml" value="0.2171875" />
+        <entry key="..\:/Users/islam/Desktop/Halan_Challenge/app/src/main/res/layout/products_list_fragment.xml" value="0.19537037037037036" />
       </map>
     </option>
   </component>

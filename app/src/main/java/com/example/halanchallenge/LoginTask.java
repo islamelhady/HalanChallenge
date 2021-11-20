@@ -61,7 +61,7 @@ public class LoginTask extends AsyncTask<String, Void, Boolean> {
             switch (status) {
                 case 200:
 
-                    this.onPostExecute(true);
+//                    this.onPostExecute(true);
             }
         } catch (java.net.MalformedURLException e) {
             Log.w(TAG, "Exception while constructing URL" + e.getMessage());

@@ -12,14 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HalanChallenge">
 
-        <activity android:name=".ProductDetailsActivity"/>
-        <activity android:name=".ProductsListActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".ProductsListActivity" />
     </application>
 
 </manifest>

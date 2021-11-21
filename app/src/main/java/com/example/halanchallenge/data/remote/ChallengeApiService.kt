@@ -1,10 +1,9 @@
 package com.example.halanchallenge.data.remote
 
 import com.example.halanchallenge.data.model.LoginResponse
+import com.example.halanchallenge.data.model.ProductsList
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ChallengeApiService {
 
@@ -15,6 +14,8 @@ interface ChallengeApiService {
         @Field("password") password: String
     ) : Response<LoginResponse>
 
+    @GET("products")
+    suspend fun getProductsInfo(@Header("Authorization") token : String?): Response<ProductsList>
 
 
     companion object {

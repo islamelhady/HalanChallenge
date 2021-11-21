@@ -18,7 +18,11 @@
         android:id="@+id/productsListFragment"
         android:name="com.example.halanchallenge.ui.list.ProductsListFragment"
         android:label="products_list_fragment"
-        tools:layout="@layout/products_list_fragment" />
+        tools:layout="@layout/products_list_fragment" >
+        <action
+            android:id="@+id/action_productsListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.halanchallenge.ui.details.ProductDetailsFragment"

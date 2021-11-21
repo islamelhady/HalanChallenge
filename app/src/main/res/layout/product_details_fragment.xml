@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.details.ProductDetailsFragment">
 
@@ -48,24 +49,6 @@
         tools:itemCount="3"
         tools:listitem="@layout/image_view_item" />
 
-    <com.arindicatorview.ARIndicatorView
-        android:id="@+id/ar_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:layoutDirection="rtl"
-        android:orientation="horizontal"
-        app:indicator_size="15"
-        app:number_of_indicators="5"
-        app:indicator_color="@android:color/darker_gray"
-        app:selected_color="@color/purple_500"
-        app:indicator_animation="@anim/zoom_in"
-        app:indicator_scrubbing="true"
-        app:animate_indicator_scrubbing="true"
-        app:layout_constraintBottom_toTopOf="@+id/product_title_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_images_banner" />
 
     <TextView
         android:id="@+id/product_title_tv"

@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.halanchallenge.databinding.ProductsListFragmentBinding
+import com.example.halanchallenge.ui.adapters.ProductClick
 import com.example.halanchallenge.ui.adapters.ProductsAdapter
 import com.example.halanchallenge.util.State
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,7 +30,7 @@ class ProductsListFragment : Fragment() {
         setupAdapter()
         setupObservers()
         accessToken = arguments?.getString("TOKEN")
-        getProductsInfo("Bearer $accessToken")
+        getProductsInfo(accessToken)
 
         return binding.root
     }
@@ -43,8 +45,13 @@ class ProductsListFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        productsAdapter = ProductsAdapter()
-
+        productsAdapter = ProductsAdapter(ProductClick {it ->
+            findNavController().navigate(
+                ProductsListFragmentDirections.actionProductsListFragmentToProductDetailsFragment(
+                    it
+                )
+            )
+        })
         // Sets the adapter of the RecyclerView
         binding.productsListRv.adapter = productsAdapter
         postponeEnterTransition()

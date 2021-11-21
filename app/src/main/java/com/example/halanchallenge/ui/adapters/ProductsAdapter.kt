@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.halanchallenge.data.model.Product
 import com.example.halanchallenge.databinding.ProductItemBinding
 
-class ProductsAdapter :
+class ProductsAdapter(val callback: ProductClick) :
     ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(DiffCallback) {
 
     /**
@@ -33,8 +33,9 @@ class ProductsAdapter :
     class ProductsViewHolder(val viewDataBinding: ProductItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
-        fun bind(product: Product) {
+        fun bind(listener: ProductClick, product: Product) {
             viewDataBinding.product = product
+            viewDataBinding.productClick = listener
             viewDataBinding.executePendingBindings()
         }
 
@@ -66,7 +67,18 @@ class ProductsAdapter :
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            holder.bind(getItem(position))
+            holder.bind(callback, getItem(position))
         }
     }
+}
+
+/**
+ * Click listener for Groups. By giving the block a name it helps a reader understand what it does.
+ */
+class ProductClick(val block: (Product) -> Unit) {
+    /**
+     * Called when a product is clicked
+     * @param product the product that was clicked
+     */
+    fun onClick(product: Product) = block(product)
 }

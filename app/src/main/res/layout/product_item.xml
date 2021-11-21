@@ -9,6 +9,10 @@
             name="product"
             type="com.example.halanchallenge.data.model.Product" />
 
+        <variable
+            name="productClick"
+            type="com.example.halanchallenge.ui.adapters.ProductClick" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/more"
             android:textColor="@color/purple_500"
+            android:onClick="@{() -> productClick.onClick(product)}"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

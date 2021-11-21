@@ -1,13 +1,11 @@
 package com.example.halanchallenge.ui.adapters
 
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 @BindingAdapter("loadImage")
 fun bindLoadImage(view: CircleImageView, url: String) {
-    if(!url.isNullOrEmpty())
-        Glide.with(view.context)
-            .load(url)
-            .into(view)
+    if (!url.isNullOrEmpty())
+        Picasso.get().load(url).into(view)
 }

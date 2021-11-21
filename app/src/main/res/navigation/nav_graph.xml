@@ -12,7 +12,8 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_productsListFragment"
-            app:destination="@id/productsListFragment" />
+            app:destination="@id/productsListFragment"
+            app:popUpTo="@id/nav_graph"/>
     </fragment>
     <fragment
         android:id="@+id/productsListFragment"
@@ -27,5 +28,9 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.example.halanchallenge.ui.details.ProductDetailsFragment"
         android:label="product_details_fragment"
-        tools:layout="@layout/product_details_fragment" />
+        tools:layout="@layout/product_details_fragment" >
+        <argument
+            android:name="products"
+            app:argType="com.example.halanchallenge.data.model.Product" />
+    </fragment>
 </navigation>

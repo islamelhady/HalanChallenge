@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.halanchallenge.R
 import com.example.halanchallenge.databinding.ProductsListFragmentBinding
+import com.example.halanchallenge.ui.MainActivity
 import com.example.halanchallenge.ui.adapters.ProductClick
 import com.example.halanchallenge.ui.adapters.ProductsAdapter
 import com.example.halanchallenge.util.State
@@ -27,6 +30,7 @@ class ProductsListFragment : Fragment() {
     ): View? {
         binding = ProductsListFragmentBinding.inflate(inflater)
 
+        setupToolbar()
         setupAdapter()
         setupObservers()
         accessToken = arguments?.getString("TOKEN")
@@ -58,6 +62,13 @@ class ProductsListFragment : Fragment() {
         binding.productsListRv.viewTreeObserver.addOnPreDrawListener {
             startPostponedEnterTransition()
             true
+        }
+    }
+
+    private fun setupToolbar(){
+        if(requireActivity() is MainActivity){
+            (activity as AppCompatActivity?)!!.setSupportActionBar(binding.listToolbar)
+            (activity as AppCompatActivity?)!!.supportActionBar!!.setTitle(R.string.my_products)
         }
     }
 

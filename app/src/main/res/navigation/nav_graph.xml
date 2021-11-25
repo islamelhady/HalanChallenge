@@ -9,15 +9,28 @@
         android:id="@+id/loginFragment"
         android:name="com.example.halanchallenge.ui.login.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment"
+            app:popUpTo="@id/nav_graph"/>
+    </fragment>
     <fragment
         android:id="@+id/productsListFragment"
         android:name="com.example.halanchallenge.ui.list.ProductsListFragment"
         android:label="products_list_fragment"
-        tools:layout="@layout/products_list_fragment" />
+        tools:layout="@layout/products_list_fragment" >
+        <action
+            android:id="@+id/action_productsListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.halanchallenge.ui.details.ProductDetailsFragment"
         android:label="product_details_fragment"
-        tools:layout="@layout/product_details_fragment" />
+        tools:layout="@layout/product_details_fragment" >
+        <argument
+            android:name="products"
+            app:argType="com.example.halanchallenge.data.model.Product" />
+    </fragment>
 </navigation>

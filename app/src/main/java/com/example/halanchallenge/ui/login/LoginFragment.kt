@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.halanchallenge.R
+import com.example.halanchallenge.data.model.Profile
 import com.example.halanchallenge.databinding.LoginFragmentBinding
 import com.example.halanchallenge.util.ApiException
 import com.example.halanchallenge.util.NoInternetException
@@ -41,8 +43,9 @@ class LoginFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val loginResponse = viewModel.userLogin(username, password)
+                val bundle = bundleOf( "PROFILE" to loginResponse.profile , "TOKEN" to loginResponse.token)
                 if (loginResponse.profile != null) {
-                    findNavController().navigate(R.id.action_loginFragment_to_productsListFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_productsListFragment, bundle )
                 } else {
                     Toast.makeText(activity, loginResponse.token, Toast.LENGTH_SHORT).show()
                 }

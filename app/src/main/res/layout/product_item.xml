@@ -23,9 +23,9 @@
         android:background="@color/background800"
         android:foreground="?attr/selectableItemBackground"
         android:onClick="@{() -> productClick.onClick(product)}"
-        app:cardBackgroundColor="@color/background800"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="8dp"
-        app:cardElevation="6dp">
+        app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:maxLines="2"
                 android:padding="8dp"
                 android:text="@{product.name_ar}"
-                android:textColor="@color/white"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

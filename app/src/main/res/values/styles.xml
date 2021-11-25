@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.HalanChallenge" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:windowActivityTransitions">true</item>
+        <item name="titleTextColor">@color/textColorPrimary</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <!-- Status bar color.-->
+        <item name="android:statusBarColor" tools:targetApi="1">@color/white</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<!--    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorHint">@color/textColorSecondary
+        </item>
+    </style>
 
     <style name="CollapsedExpandedTitleText" parent="Theme.HalanChallenge">
         <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/font_size</item>
+        <item name="android:paddingTop">@dimen/spacing</item>
+        <item name="android:paddingBottom">@dimen/spacing</item>
+        <item name="android:paddingStart">@dimen/spacing</item>
+        <item name="android:paddingEnd">@dimen/spacing</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light</item>
+        <item name="cornerRadius">@dimen/spacing_xlarge</item>
+    </style>
+
+    <style name="MaterialButtonStyle.Login">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/commonColorWhite</item>
+        <item name="rippleColor">@color/white</item>
     </style>
 </resources>

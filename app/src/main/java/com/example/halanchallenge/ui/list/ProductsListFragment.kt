@@ -75,13 +75,17 @@ class ProductsListFragment : Fragment() {
     private fun setupObservers() {
         viewModel.productInfo.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
+                is State.Loading -> binding.progress.visibility = View.VISIBLE
                 is State.Success -> {
-                    if (state.data.products?.isNotEmpty()!!)
+                    if (state.data.products?.isNotEmpty()!!){
                         productsAdapter?.submitList(state.data.products)
+                        binding.progress.visibility = View.GONE
+                    }
                     else
                         Toast.makeText(activity, "No data", Toast.LENGTH_SHORT).show()
                 }
                 is State.Error -> {
+                    binding.progress.visibility = View.GONE
                     Toast.makeText(activity, state.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -95,6 +99,12 @@ class ProductsListFragment : Fragment() {
 
     private fun getProductsInfo(token: String?){
         viewModel.getProductsInfo(token)
+    }
+
+    // clear views references to fix memory leaks
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.unbind()
     }
 
 }

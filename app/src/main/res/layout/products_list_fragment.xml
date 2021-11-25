@@ -16,19 +16,21 @@
         android:id="@+id/detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/white"
         android:fitsSystemWindows="false">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:layoutDirection="rtl"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/background"
+                android:background="@color/colorAccent"
                 app:contentScrim="@color/colorPrimary"
                 app:expandedTitleGravity="top|right"
                 app:expandedTitleTextAppearance="@style/CollapsedExpandedTitleText"
@@ -37,79 +39,68 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/background"
-                    android:layoutDirection="rtl">
+                    android:background="@color/white">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/header_cv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-                        app:cardBackgroundColor="@color/background800"
-                        app:cardCornerRadius="20dp"
+                        android:id="@+id/cardView"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="27dp"
+                        android:elevation="18dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="4dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/user_iv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:paddingBottom="12dp">
-
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/user_iv"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginStart="14dp"
-                                android:layout_marginTop="27dp"
-                                android:layout_marginBottom="31dp"
-                                app:cardBackgroundColor="@color/background800"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintDimensionRatio="1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:loadCircleImage="@{profile.image}"
-                                tools:src="@tools:sample/avatars" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/username_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="24dp"
-                                android:text="@{profile.name}"
-                                android:textColor="@color/white"
-                                android:textSize="20sp"
-                                app:layout_constraintStart_toEndOf="@+id/user_iv"
-                                app:layout_constraintTop_toTopOf="@+id/user_iv"
-                                tools:text="asdsadsasdsdas" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/phone_number_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="24dp"
-                                android:layout_marginTop="8dp"
-                                android:text="@{profile.phone}"
-                                android:textColor="@color/white"
-                                android:textSize="16sp"
-                                app:layout_constraintStart_toEndOf="@+id/user_iv"
-                                app:layout_constraintTop_toBottomOf="@+id/username_tv"
-                                tools:text="asdsadsasdsdas" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
+                            android:scaleType="fitXY"
+                            app:loadImage="@{profile.image}"
+                            tools:src="@tools:sample/avatars" />
                     </androidx.cardview.widget.CardView>
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/username_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="@{profile.name}"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView"
+                        tools:text="asdsadsasdsdas" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/phone_number_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="@{profile.phone}"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/username_tv"
+                        tools:text="asdsadsasdsdas" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/list_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    android:theme="@style/AppTheme.AppBarOverlay"
                     app:layout_collapseMode="pin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -136,7 +127,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/my_products"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/white_87"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/textsize_xxxlarge"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -156,6 +147,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:indeterminate="true"
+            android:visibility="gone" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

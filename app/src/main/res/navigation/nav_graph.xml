@@ -32,5 +32,8 @@
         <argument
             android:name="products"
             app:argType="com.example.halanchallenge.data.model.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
     </fragment>
 </navigation>

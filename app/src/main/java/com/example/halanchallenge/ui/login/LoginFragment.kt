@@ -12,8 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.halanchallenge.R
 import com.example.halanchallenge.data.model.Profile
 import com.example.halanchallenge.databinding.LoginFragmentBinding
-import com.example.halanchallenge.util.ApiException
-import com.example.halanchallenge.util.NoInternetException
+import com.example.halanchallenge.util.*
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -28,33 +27,72 @@ class LoginFragment : Fragment() {
     ): View? {
         binding = LoginFragmentBinding.inflate(inflater)
 
-
         binding.loginButton.setOnClickListener {
-            loginUser()
+            if(viewModel.validateFields()){
+                loginUser()
+            }
         }
 
         return binding.root
     }
 
-    private fun loginUser() {
+    private fun setupTextChangeListeners() {
         val username = binding.usernameEt.text.toString().trim()
-        val password = binding.passwordEt.text.toString().trim()
+            viewModel.username = username
 
-        lifecycleScope.launch {
+        val passwordEt = binding.usernameEt.text.toString().trim()
+            viewModel.password = passwordEt
+
+    }
+
+
+    private fun loginUser() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            val loginResponse = viewModel.userLogin()
+            val bundle =
+                bundleOf("PROFILE" to loginResponse.profile, "TOKEN" to loginResponse.token)
             try {
-                val loginResponse = viewModel.userLogin(username, password)
-                val bundle = bundleOf( "PROFILE" to loginResponse.profile , "TOKEN" to loginResponse.token)
                 if (loginResponse.profile != null) {
-                    findNavController().navigate(R.id.action_loginFragment_to_productsListFragment, bundle )
-                } else {
-                    Toast.makeText(activity, loginResponse.token, Toast.LENGTH_SHORT).show()
+                    viewModel.userLogin()
+                    findNavController().navigate(
+                        R.id.action_loginFragment_to_productsListFragment,
+                        bundle
+                    )
                 }
             } catch (e: ApiException) {
                 e.printStackTrace()
             } catch (e: NoInternetException) {
                 e.printStackTrace()
             }
+
         }
     }
+
+
+//    private fun loginUser() {
+//        val username = binding.usernameEt.text.toString().trim()
+//        val password = binding.passwordEt.text.toString().trim()
+//
+//        lifecycleScope.launch {
+//            try {
+//                val loginResponse = viewModel.userLogin(username, password)
+//                val bundle =
+//                    bundleOf("PROFILE" to loginResponse.profile, "TOKEN" to loginResponse.token)
+//                if (loginResponse.profile != null) {
+//                    findNavController().navigate(
+//                        R.id.action_loginFragment_to_productsListFragment,
+//                        bundle
+//                    )
+//                } else {
+//                    Toast.makeText(activity, loginResponse.token, Toast.LENGTH_SHORT).show()
+//                }
+//            } catch (e: ApiException) {
+//                e.printStackTrace()
+//            } catch (e: NoInternetException) {
+//                e.printStackTrace()
+//            }
+//        }
+//    }
+
 
 }

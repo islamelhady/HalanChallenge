@@ -5,6 +5,7 @@
     <color name="colorAccent">#2979FF</color>
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#757575</color>
+    <color name="commonColorWhite">#FFFFFF</color>
 
     <color name="background">#2B292B</color>
     <color name="teal_200">#FF03DAC5</color>

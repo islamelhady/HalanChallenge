@@ -1,5 +1,11 @@
 # HalanChallenge
 
+## ScreenShot
+
+<p align="center">
+  <img src="Preview/screen.gif" width="200" height="400"/>
+</p>
+
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..

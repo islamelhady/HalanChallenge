@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.halanchallenge.R
 import com.example.halanchallenge.databinding.ProductsListFragmentBinding
 import com.example.halanchallenge.ui.MainActivity
 import com.example.halanchallenge.ui.adapters.ProductClick
 import com.example.halanchallenge.ui.adapters.ProductsAdapter
 import com.example.halanchallenge.util.State
+import com.example.halanchallenge.util.makeItInVisible
+import com.example.halanchallenge.util.makeItVisible
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProductsListFragment : Fragment() {
@@ -22,7 +25,7 @@ class ProductsListFragment : Fragment() {
     private lateinit var binding: ProductsListFragmentBinding
     private val viewModel: ProductsListViewModel by viewModel()
     private var productsAdapter: ProductsAdapter? = null
-    private var accessToken: String? = null
+    private val safeArgs : ProductsListFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +36,7 @@ class ProductsListFragment : Fragment() {
         setupToolbar()
         setupAdapter()
         setupObservers()
-        accessToken = arguments?.getString("TOKEN")
-        getProductsInfo(accessToken)
+        getProductsInfo(safeArgs.loginResponse.token)
 
         return binding.root
     }
@@ -44,7 +46,7 @@ class ProductsListFragment : Fragment() {
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            profile = arguments?.getParcelable("PROFILE")
+            profile = safeArgs.loginResponse.profile
         }
     }
 
@@ -75,17 +77,17 @@ class ProductsListFragment : Fragment() {
     private fun setupObservers() {
         viewModel.productInfo.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
-                is State.Loading -> binding.progress.visibility = View.VISIBLE
+                is State.Loading -> binding.progress.makeItVisible()
                 is State.Success -> {
                     if (state.data.products?.isNotEmpty()!!){
                         productsAdapter?.submitList(state.data.products)
-                        binding.progress.visibility = View.GONE
+                        binding.progress.makeItInVisible()
                     }
                     else
                         Toast.makeText(activity, "No data", Toast.LENGTH_SHORT).show()
                 }
                 is State.Error -> {
-                    binding.progress.visibility = View.GONE
+                    binding.progress.makeItInVisible()
                     Toast.makeText(activity, state.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -94,7 +96,7 @@ class ProductsListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        getProductsInfo(accessToken)
+        getProductsInfo(safeArgs.loginResponse.token)
     }
 
     private fun getProductsInfo(token: String?){

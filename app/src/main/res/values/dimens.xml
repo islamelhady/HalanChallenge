@@ -7,5 +7,11 @@
     <dimen name="spacing_xlarge">10dp</dimen>
     <dimen name="spacing">15dp</dimen>
     <dimen name="font_size">22sp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="textSize_xlarge">24sp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xxxlarge">48dp</dimen>
+    <dimen name="textSize_regular">14sp</dimen>
+    <dimen name="margin_login">15dp</dimen>
 
 </resources>

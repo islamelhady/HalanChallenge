@@ -10,9 +10,3 @@ fun bindLoadImage(view: AppCompatImageView, url: String) {
     if (!url.isNullOrEmpty())
         Picasso.get().load(url).into(view)
 }
-
-@BindingAdapter("loadCircleImage")
-fun bindLoadImage(view: CircleImageView, url: String) {
-    if (!url.isNullOrEmpty())
-        Picasso.get().load(url).into(view)
-}

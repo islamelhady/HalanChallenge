@@ -13,7 +13,15 @@
         <action
             android:id="@+id/action_loginFragment_to_productsListFragment"
             app:destination="@id/productsListFragment"
-            app:popUpTo="@id/nav_graph"/>
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_right"
+            app:popExitAnim="@anim/slide_out_from_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_loginFragment_to_bottomDialogFragment"
+            app:destination="@id/bottomDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/productsListFragment"
@@ -22,7 +30,14 @@
         tools:layout="@layout/products_list_fragment" >
         <action
             android:id="@+id/action_productsListFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_right"
+            app:popExitAnim="@anim/slide_out_from_right" />
+        <argument
+            android:name="loginResponse"
+            app:argType="com.example.halanchallenge.data.model.LoginResponse" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
@@ -36,4 +51,13 @@
             android:id="@+id/action_productDetailsFragment_to_productsListFragment"
             app:destination="@id/productsListFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/bottomDialogFragment"
+        android:name="com.example.halanchallenge.ui.bottomDialog.BottomDialogFragment"
+        android:label="BottomDialogFragment"
+        tools:layout="@layout/fragment_bottom_dialog">
+        <argument
+            android:name="errorMessage"
+            app:argType="string" />
+    </dialog>
 </navigation>
